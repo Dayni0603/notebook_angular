@@ -1,1 +1,52 @@
-<p>loan-decision works!</p>
+<div class="mx-auto main-container">
+  <!-- page header start -->
+  <section class="sticky z-10" style="top: 50px; height: 120px">
+    <div class="page-header-bg"></div>
+    <nz-page-header class="site-page-header" class="bg-white">
+      <nz-page-header-title>Title</nz-page-header-title>
+      <nz-breadcrumb nz-page-header-breadcrumb>
+        <nz-breadcrumb-item>
+          <a style="color: rgba(0, 0, 0, 0.45); transition: color 0.3s"
+            >Loan Decision</a
+          >
+        </nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <nz-page-header-extra>
+        <button nz-button nzType="primary">
+          <i nz-icon nzType=""></i>
+          Button one
+        </button>
+      </nz-page-header-extra>
+    </nz-page-header>
+    <div class="page-header-bg"></div>
+  </section>
+  <!-- page header end -->
+  <section class="mt-8">
+    <div style="padding: 2%">
+      <nz-table
+        #filterTable
+        [nzData]="listOfData"
+        [nzScroll]="{ x: '2080px', y: '700px' }"
+        nzSize="small"
+      >
+        <thead>
+          <tr>
+            <th
+              *ngFor="let column of listOfColumns"
+              [nzSortOrder]="column.sortOrder"
+              [nzSortFn]="column.sortFn"
+              [nzSortDirections]="column.sortDirections"
+              [nzFilterMultiple]="column.filterMultiple"
+              [nzFilters]="column.listOfFilter"
+              [nzFilterFn]="column.filterFn"
+              [nz-tooltip]="column.tooltip"
+            >
+              <small> {{ column.name }}</small>
+            </th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </nz-table>
+    </div>
+  </section>
+</div>

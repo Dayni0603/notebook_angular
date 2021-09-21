@@ -11,22 +11,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoanDecisionComponent } from './loan-decision/loan-decision.component';
+import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoanDecisionComponent
-  ],
+  declarations: [AppComponent, LoanDecisionComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DemoNgZorroAntdModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

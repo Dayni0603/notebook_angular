@@ -1,21 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-loan-decision',
-  templateUrl: './loan-decision.component.html',
-  styleUrls: ['./loan-decision.component.scss'],
+  selector: 'app-response-list',
+  templateUrl: './response-list.component.html',
+  styleUrls: ['./response-list.component.scss'],
 })
-export class LoanDecisionComponent implements OnInit {
+export class ResponseListComponent implements OnInit {
   constructor() {}
   listOfData = [];
-  requestForm!: FormGroup;
-  twnOptions = [
-    { label: 'Red', value: 'red' },
-    { label: 'Yellow', value: 'yellow' },
-    { label: 'Green', value: 'green' },
-    { label: 'Orange', value: 'orange' },
-  ];
+
   listOfColumns: any[] = [
     {
       name: 'State',

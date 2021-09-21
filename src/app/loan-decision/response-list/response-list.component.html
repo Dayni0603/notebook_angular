@@ -1,0 +1,28 @@
+<section class="mt-8">
+  <div style="padding: 2%">
+    <nz-table
+      #filterTable
+      [nzData]="listOfData"
+      [nzScroll]="{ x: '2080px', y: '700px' }"
+      nzSize="small"
+    >
+      <thead>
+        <tr>
+          <th
+            *ngFor="let column of listOfColumns"
+            [nzSortOrder]="column.sortOrder"
+            [nzSortFn]="column.sortFn"
+            [nzSortDirections]="column.sortDirections"
+            [nzFilterMultiple]="column.filterMultiple"
+            [nzFilters]="column.listOfFilter"
+            [nzFilterFn]="column.filterFn"
+            [nz-tooltip]="column.tooltip"
+          >
+            <small> {{ column.name }}</small>
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </nz-table>
+  </div>
+</section>

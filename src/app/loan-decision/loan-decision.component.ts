@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { HeaderAction } from '../models/columnItem';
+import { RequestModel } from '../models/request';
+import { RenewalResponseModel } from '../models/response';
 
 @Component({
   selector: 'app-loan-decision',
@@ -8,14 +11,36 @@ import { FormGroup } from '@angular/forms';
 })
 export class LoanDecisionComponent implements OnInit {
   constructor() {}
-  listOfData = [];
-  requestForm!: FormGroup;
-  twnOptions = [
-    { label: 'Red', value: 'red' },
-    { label: 'Yellow', value: 'yellow' },
-    { label: 'Green', value: 'green' },
-    { label: 'Orange', value: 'orange' },
+  isRequestFormOpen = false;
+  clearRequestForm = false;
+  borrowerRequest = {};
+  listOfData: RenewalResponseModel[] = [];
+  formTitle = '';
+  requestModel = 0;
+  headerButton: HeaderAction[] = [
+    {
+      title: 'Renewal',
+      icon: 'calculator',
+      onClick: () => this.openDrawer(1),
+    },
+    {
+      title: 'New Borrower',
+      icon: 'calculator',
+      onClick: () => this.openDrawer(2),
+    },
   ];
+  openDrawer(model: number): void {
+    console.log(model);
+
+    this.isRequestFormOpen = true;
+    if (model === 0) {
+      this.formTitle = 'Renewal';
+    } else if (model === 1) {
+      this.formTitle = 'New Borrower';
+    }
+    this.requestModel = model;
+  }
+
   listOfColumns: any[] = [
     {
       name: 'State',
@@ -116,5 +141,19 @@ export class LoanDecisionComponent implements OnInit {
       tooltip: 'Employment Verification Review',
     },
   ];
+
+  closeDrawer(): void {
+    this.isRequestFormOpen = false;
+    this.clearRequestForm = false;
+    this.requestModel = 0;
+  }
+  SubmitForm(requestData: RequestModel): void {
+    this.borrowerRequest = requestData;
+    if (this.requestModel === 1) {
+      // this.getRoaProfit();
+    } else if (this.requestModel === 2) {
+      //this.getRoaProfitForNb();
+    }
+  }
   ngOnInit(): void {}
 }

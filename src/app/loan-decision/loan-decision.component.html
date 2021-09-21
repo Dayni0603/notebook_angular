@@ -12,15 +12,26 @@
         </nz-breadcrumb-item>
       </nz-breadcrumb>
       <nz-page-header-extra>
-        <button nz-button nzType="primary">
-          <i nz-icon nzType=""></i>
-          Button one
+        <button
+          nz-button
+          nzType="primary"
+          *ngFor="let button of headerButton; index as i"
+          (click)="openDrawer(i)"
+        >
+          <i nz-icon *ngIf="button.icon" [nzType]="button.icon"></i>
+          {{ button.title }}
         </button>
       </nz-page-header-extra>
     </nz-page-header>
     <div class="page-header-bg"></div>
   </section>
   <!-- page header end -->
-  <app-request-form></app-request-form>
+  <app-request-form
+    [isRequestFormModalOpen]="isRequestFormOpen"
+    [isCleanRequestForm]="clearRequestForm"
+    [formTitle]="formTitle"
+    (Close)="closeDrawer()"
+    (Submit)="SubmitForm($event)"
+  ></app-request-form>
   <app-response-list></app-response-list>
 </div>

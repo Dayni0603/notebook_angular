@@ -2,6 +2,130 @@
   [nzBodyStyle]="{ overflow: 'auto' }"
   [nzMaskClosable]="false"
   [nzWidth]="720"
-  [nzVisible]="true"
-  nzTitle="Loan"
-></nz-drawer>
+  [nzVisible]="isRequestFormModalOpen"
+  [nzTitle]="formTitle"
+  (nzOnClose)="onClose()"
+>
+<form nz-form nzLayout="vertical" [formGroup]="requestForm">
+  <div nz-row [nzGutter]="12">
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="branchId">Branch Id</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter branch Id!">
+          <input nz-input placeholder="please enter branch Id" formControlName="branchId" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Payment</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter payment" formControlName="payment" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Term</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter term" formControlName="term" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="12">
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>V4 Score</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter v4 score" formControlName="v4Score" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Rv Stl Score</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter rv stl score" formControlName="rvStlScore" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Loan History Number</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter loan history number" formControlName="loanHistoryNumber" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="12">
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Twn</nz-form-label>
+        <nz-form-control>
+          <nz-select formControlName="twn" [nzOptions]="twnOptions"></nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Tu Fraud Score</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter tu fraud score" formControlName="tuFraudScore" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row [nzGutter]="12">
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Ah Premium</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter ah premium" formControlName="ahPremium" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Life Premium</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter life premium" formControlName="lifePremium" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Personal Property Premium</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter personal property premium" formControlName="personalPropertyPremium" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="12">
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Iui Premium</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter iui premium" formControlName="iuiPremium" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="8">
+      <nz-form-item>
+        <nz-form-label>Si Auto Premium</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="please enter si auto premium" formControlName="siAutoPremium" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div style="float: right;">
+    <button nz-button nzType="danger" style="margin-right: 8px;" (click)="onClear()">Clear</button>
+    <button nz-button nzType="primary" (click)="validateForm()">Submit</button>
+  </div>
+</form>
+</nz-drawer>
